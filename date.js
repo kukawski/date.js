@@ -23,6 +23,9 @@ function date (format, timestamp) {
     var weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     var weekDaysShort = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     
+    var DATE_ISO8601 = '%Y-%m-%dT%H:%i:%s%O';
+    var DATE_RFC2822 = '%D, %d %M %y %H:%i:%s %O'
+    
     function pad (input, toLength) {
         return Array(Math.ceil(Math.max(0, toLength - ('' + input).length)) + 1).join('0') + input;
     }
@@ -110,10 +113,10 @@ function date (format, timestamp) {
             return pad(hours % 12 || 12, 2);
         },
         c: function () {
-            return date('%Y-%m-%dT%H:%i:%s%P', timestamp);
+            return date(DATE_ISO8601, timestamp);
         },
         r: function () {
-            return date('%D, %d %M %Y %H:%i:%s %O', timestamp);
+            return date(DATE_RFC2822, timestamp);
         },
         I: function () {
             return (tz !== new Date(year, 0).getTimezoneOffset()) | 0;
@@ -144,3 +147,9 @@ function date (format, timestamp) {
         return helpers[$1] ? helpers[$1]() : $0;
     });
 }
+
+date.DATE_ATOM = date.DATE_RFC3339 = date.DATE_W3C = '%Y-%m-%dT%H:%i:%s%P';
+date.DATE_COOKIE = date.DATE_RFC850 = '%l, %d-%M-%y %H:%i:%s %T';
+date.DATE_ISO8601 = '%Y-%m-%dT%H:%i:%s%O';
+date.DATE_RFC822 = date.DATE_RFC1036 = date.DATE_RFC1123 = date.DATE_RFC2822 = '%D, %d %M %y %H:%i:%s %O';
+date.DATE_RSS = '%D, %d %M %Y %H:%i:%s %O';
