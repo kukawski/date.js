@@ -24,12 +24,7 @@ function date (format, timestamp) {
     var weekDaysShort = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     
     function pad (input, toLength) {
-        input += '';
-        toLength = Math.max(0, toLength) || 2;
-
-        var charsRequired = Math.max(0, toLength - input.length);
-
-        return Array(Math.ceil(charsRequired) + 1).join('0') + input;
+        return Array(Math.ceil(Math.max(0, toLength - ('' + input).length)) + 1).join('0') + input;
     }
     
     var helpers = {
@@ -43,7 +38,7 @@ function date (format, timestamp) {
             return weekDaysShort[weekDay];
         },
         d: function () {
-            return pad(day);
+            return pad(day, 2);
         },
         N: function () {
             return weekDay || 7;
@@ -61,13 +56,13 @@ function date (format, timestamp) {
         },
         W: function () {
             var t = new Date(year, month, day + 4 - (weekDay || 7));
-            return pad(1 + Math.floor((t - new Date(t.getFullYear(), 0, 1)) / 6048e5));
+            return pad(1 + Math.floor((t - new Date(t.getFullYear(), 0, 1)) / 6048e5), 2);
         },
         F: function () {
             return months[month];
         },
         m: function () {
-            return pad(month + 1);
+            return pad(month + 1, 2);
         },
         M: function () {
             return monthsShort[month];
@@ -85,7 +80,7 @@ function date (format, timestamp) {
             return year;
         },
         y: function () {
-            return pad(year % 100);
+            return pad(year % 100, 2);
         },
         a: function () {
             return hours < 12 ? 'am' : 'pm';
@@ -100,19 +95,19 @@ function date (format, timestamp) {
             return hours;
         },
         H: function () {
-            return pad(hours);
+            return pad(hours, 2);
         },
         i: function () {
-            return pad(min);
+            return pad(min, 2);
         },
         s: function () {
-            return pad(sec);
+            return pad(sec, 2);
         },
         U: function () {
             return timestamp / 1e3 | 0;
         },
         h: function (t) {
-            return pad(hours % 12 || 12);
+            return pad(hours % 12 || 12, 2);
         },
         c: function () {
             return date('%Y-%m-%dT%H:%i:%s%P', timestamp);
