@@ -1,0 +1,11 @@
+This script is a JavaScript port of PHP's date function (http://php.net/date) with one difference.
+
+The main difference to PHP is the syntax used in the format parameter.
+In PHP all modifiers are put directly, eg. Y-m-d.
+My function requires all modifiers to be prefixed with a % character, eg. %Y-%m-%d.
+
+Supported are:
+a, A, B, c, d, D, F, g, G, h, H, i, I, j, l, L, m, M, n, N, o, O, P, r, s, S, t, u, U, w, W, y, Y, z, Z
+
+Not supported:
+e, T
