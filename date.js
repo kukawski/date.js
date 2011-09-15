@@ -49,7 +49,7 @@ function date (format, timestamp) {
         S: function () {
             // INFO: this works fine for numbers between 0 and 99
             // since dates are between 1 and 31, it's OK to use it
-            return ['st','nd','rd'][day < 11 || day > 13 ? day % 10 - 1 : 3] || 'th';
+            return ['st', 'nd', 'rd'][day < 11 || day > 13 ? day % 10 - 1 : 3] || 'th';
         },
         w: function () {
             return weekDay;
