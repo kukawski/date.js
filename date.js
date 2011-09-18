@@ -121,8 +121,9 @@ function date (format, timestamp) {
         I: function () {
             return (tz !== new Date(year, 0).getTimezoneOffset()) | 0;
         },
-        O: function () {
-            return (tz > 0 ? '-' : '+') + pad(Math.abs(tz) * 100 / 60 | 0, 4);
+        O: function (a) {
+            a = Math.abs(tz);
+            return (tz > 0 ? '-' : '+') + pad((a / 60 | 0) * 100 + a % 60, 4);
         },
         P: function (t) {
             t = date('%O', timestamp);
