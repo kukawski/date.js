@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset=utf-8 />
+		<title>date.js</title>
+		<script src="date.js"></script>
+	</head>
+	<body>
+		<script>
+		console.log("Day of month:", date("%j %d"));
+		console.log("Day of week:", date("%w %N %l %D"));
+		console.log("Day suffix:", date("%S"));
+		console.log("Day of year:", date("%z"));
+		console.log("ISO week & year number:", date("%W %o"));
+		console.log("Month:", date("%n %m %F %M"));
+		console.log("Days in month:", date("%t"));
+		console.log("Leap year:", date("%L"));
+		console.log("Year:", date("%y %Y"));
+		console.log("Hours:", date("%a %A %g %G %h %H"));
+		console.log("min & sec", date("%i:%s"));
+		console.log("Unix timestamp", date("%U"));
+		console.log("Microseconds:", date("%u"));
+		console.log("DST:", date("%I"));
+		console.log("Diff to GMT in hours:", date("%O %P"));
+		console.log("Tz offset in sec:", date("%Z"));
+		console.log(date("@%B"));
+		console.log(date("%c"));
+		console.log(date("%r"));
+		</script>
+	</body>
+</html>
